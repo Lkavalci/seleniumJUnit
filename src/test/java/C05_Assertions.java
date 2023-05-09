@@ -51,5 +51,27 @@ public class C05_Assertions {
 
 
     //      ○ FrancaisLinkTest => Fransizca Linkin görüntülendiğini test edin
+@Test
+    public void test03(){
+​
+        //      ○ logoTest => BestBuy logosunun görüntülendigini test edin
 
+​
+        WebElement logoBestBuyElementi= driver.findElement(By.xpath("(//img[@alt='Best Buy Logo'])[1]"));
+​
+        Assert.assertTrue(logoBestBuyElementi.isDisplayed());
+
+​
+​
+    }
+​
+    @Test
+    public void test04(){
+
+        //      ○ FrancaisLinkTest => Fransizca Linkin görüntülendiğini test edin
+        WebElement   francaisLinkTesElementi=driver.findElement(By.className("is-active"));
+        Assert.assertTrue(francaisLinkTesElementi.isDisplayed());
+​
+        driver.quit();
+    }
  */
