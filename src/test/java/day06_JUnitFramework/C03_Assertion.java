@@ -11,7 +11,7 @@ public class C03_Assertion {
         Bir Assertion failed olursa
         Assertion'in oldugu satirda exception olusur
         ve assertion satirindan sonraki kodlar CALISMAZ
-
+C01 deki yaptıklarımızın if yerine assertion ile yapılmış halları aşağıda -->
 WebDriver driver;
     @Test
     public void googleTest(){
@@ -20,7 +20,9 @@ WebDriver driver;
         driver.get("https://www.google.com");
         String expectedIcerik="google1";
         String actualUrl= driver.getCurrentUrl();
-        Assert.assertTrue(actualUrl.contains(expectedIcerik));
+
+        --> Assert.assertTrue(actualUrl.contains(expectedIcerik));
+
         driver.close();
     }
     @Test
@@ -30,7 +32,9 @@ WebDriver driver;
         driver.get("https://www.wisequarter.com");
         String expectedIcerik = "wisequarter1";
         String actualUrl= driver.getCurrentUrl();
-        Assert.assertTrue(actualUrl.contains(expectedIcerik));
+
+        --> Assert.assertTrue(actualUrl.contains(expectedIcerik));
+
         driver.close();
     }
     @Test
@@ -39,7 +43,9 @@ WebDriver driver;
         mahserin4Atlisi();
         driver.get("https://www.amazon.com");
         WebElement amazonLogoElementi = driver.findElement(By.id("nav-logo-sprites"));
-        Assert.assertTrue(amazonLogoElementi.isDisplayed());
+
+        -->Assert.assertTrue(amazonLogoElementi.isDisplayed());
+
         driver.close();
     }
     public void mahserin4Atlisi(){
