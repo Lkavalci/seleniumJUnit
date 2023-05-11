@@ -2,6 +2,7 @@ package day07_JUnit_dropdown;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -11,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
 import java.time.Duration;
+import java.util.List;
 
 public class C05_DropdownMenu {
     /*
@@ -28,12 +30,12 @@ public class C05_DropdownMenu {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         //driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(45));
-
     }
     @After
     public void teardown(){
         driver.close();
     }
+
     @Test
     public void dropdownTest() throws InterruptedException{
         // *https://the-internet.herokuapp.com/dropdown adresine gidin.
@@ -43,26 +45,21 @@ public class C05_DropdownMenu {
         Select select=new Select(dropdownMenuElementi);
         select.selectByIndex(1);
         System.out.println(select.getFirstSelectedOption().getText());
-    }
-}
-/*
 
-        Select select= new Select(dropdownMenuElementi);
-        select.selectByIndex(1);
-        System.out.println(select.getFirstSelectedOption().getText());
         //  2.Value kullanarak Seçenek 2'yi (Option 2) seçin ve yazdırın
         select.selectByValue("2");
         System.out.println(select.getFirstSelectedOption().getText());
+
         //  3.Visible Text(Görünen metin) kullanarak Seçenek 1’i (Option 1) seçin ve yazdırın
         select.selectByVisibleText("Option 1");
         System.out.println(select.getFirstSelectedOption().getText());
+
         //  4.Tüm dropdown değerleri(value) yazdırın
         List<WebElement> optionsList = select.getOptions();
-        System.out.println("=================");
-        for (WebElement eachElement: optionsList
-             ) {
-            System.out.println(eachElement.getText());
-        }
+
+       for (WebElement eachElement : optionsList) {
+           System.out.println(eachElement.getText());
+       }
         //  5. Dropdown’un boyutunun 4 olduğunu test edin
         int expectedSize=4;
         int actualSize= optionsList.size();
@@ -70,5 +67,3 @@ public class C05_DropdownMenu {
         Thread.sleep(3000);
     }
 }
-
- */
