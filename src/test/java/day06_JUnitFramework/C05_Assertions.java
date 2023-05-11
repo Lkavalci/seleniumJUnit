@@ -1,3 +1,5 @@
+package day06_JUnitFramework;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,6 +32,7 @@ public class C05_Assertions {
                 String actualUrl= driver.getCurrentUrl();
 
                 Assert.assertEquals(expectedUrl,actualUrl);
+                driver.close();
     }
 
     @Test
@@ -39,6 +42,7 @@ public class C05_Assertions {
         String actualTitle= driver.getTitle();
 
         Assert.assertFalse(actualTitle.contains(unExpectedIcerik));
+        driver.close();
     }
 
     @Test
