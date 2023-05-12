@@ -43,7 +43,7 @@ public class C04_IFrame extends TestBase {
         */
 
         driver.switchTo().defaultContent();
-        WebElement elementalSeleniumLinki= driver.findElement(By.linkText("Elemantal Selenium"));
+        WebElement elementalSeleniumLinki= driver.findElement(By.linkText("Elemental Selenium"));
         Assert.assertTrue(elementalSeleniumLinki.isDisplayed());
         System.out.println(elementalSeleniumLinki.getText());
         Thread.sleep(3000);

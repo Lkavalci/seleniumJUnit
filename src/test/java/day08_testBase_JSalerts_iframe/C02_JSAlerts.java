@@ -4,7 +4,21 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import utilities.TestBaseBeforeClass;
-
+/*
+        Otomasyon yaparken iki tur alert ile karsilasabiliriz
+        1- HTML alerts :
+           HTML kodlari ile olusturulmus alert'lerdir
+           HTML ile olusturuldugu icin inspect edilebilir,
+           locate edilebilir ve driver ile kullanilabilir
+        2- JavaScript Alerts :
+           Inspect yapilamaz, locate edilemez
+           Testlerimiz sirasinda JS alert ile karsilasirsak
+           driver.switchTo().alert() method'larini kullanarak
+           alert'e gecis yapabilir ve alert uzerinde
+           OK, Cancel, Alert yazisini alma getText()
+           ve alert'e yazi yollama sendKeys()
+           method'larini kullanabiliriz.
+     */
 public class C02_JSAlerts extends TestBaseBeforeClass {
 
     /*
@@ -26,13 +40,19 @@ public class C02_JSAlerts extends TestBaseBeforeClass {
  - Cikan sonuc yazisinin Abdullah icerdigini test edelim
      */
     @Test
-    public void test1(){
+    public void test1() throws InterruptedException {
+      //  1. Test
+      //          - https://the-internet.herokuapp.com/javascript_alerts adresine gidin
         driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+       // - 1.alert’e tiklayin
+        Thread.sleep(1000);
         driver.findElement(By.xpath("//*[text()=‘Click for JS Alert’]")).click();
+        Thread.sleep(1000);
+        //- Alert’deki yazinin “I am a JS Alert” oldugunu test edin
         String expectedAlertYazisi="I am a JS Alert";
         String actualAlertYazisi=driver.switchTo().alert().getText();
         Assert.assertEquals(expectedAlertYazisi,actualAlertYazisi);
-
+        // - OK tusuna basip alert’i kapatin
         driver.switchTo().alert().accept();
     }
     @Test
