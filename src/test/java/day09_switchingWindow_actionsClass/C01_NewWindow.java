@@ -19,7 +19,7 @@ public class C01_NewWindow extends TestBase {
         driver.get("https://www.amazon.com");
         String ilkSayfaWHD=driver.getWindowHandle();
 
-        // title'in amazon kelimesi icerdigini test edin
+        // title'in Amazon kelimesi icerdigini test edin
         String expectedIcerik ="Amazon";
         String actualTitle= driver.getTitle();
         Assert.assertTrue(actualTitle.contains(expectedIcerik));
@@ -29,7 +29,14 @@ public class C01_NewWindow extends TestBase {
         Thread.sleep(2000);
         driver.get("https://www.wisequarter.com");
         String ikinciSayfaWHD=driver.getWindowHandle();
-
+/*
+Eger driver.switchTo().newWindow() kullanilirsa
+        driver otomatik olarak acilan yeni sayfaya gecer
+        eger gorevimizde yeni window'a gittik'ten sonra
+        window'lar arasi gecis islemi varsa
+        uzerinde calistigimiz window'larin
+        windowHandleDegerlerini alip kaydetmekte fayda var
+ */
 // url'in wisequarter icerdigini test edin
         expectedIcerik="wisequarter";
         String actualUrl=driver.getCurrentUrl();
@@ -53,12 +60,7 @@ import org.openqa.selenium.WindowType;
 import utilities.TestBase;
 public class C01_NewWindow extends TestBase {
     /*
-        Eger driver.switchTo().newWindow() kullanilirsa
-        driver otomatik olarak acilan yeni sayfaya gecer
-        eger gorevimizde yeni window'a gittik'ten sonra
-        window'lar arasi gecis islemi varsa
-        uzerinde calistigimiz window'larin
-        windowHandleDegerlerini alip kaydetmekte fayda var
+
 
 @Test
 public void test01() throws InterruptedException {

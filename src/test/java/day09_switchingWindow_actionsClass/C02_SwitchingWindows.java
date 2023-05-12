@@ -9,7 +9,7 @@ import utilities.TestBase;
 public class C02_SwitchingWindows extends TestBase {
 
     @Test
-    public  void test01(){
+    public  void test01() throws InterruptedException {
 //● https://the-internet.herokuapp.com/windows adresine gidin.
 driver.get("https://the-internet.herokuapp.com/windows");
 
@@ -19,9 +19,30 @@ driver.get("https://the-internet.herokuapp.com/windows");
         String actualYazi= openingWindowYaziElementi.getText();
         Assert.assertEquals(expectedYazi,actualYazi);
 
+        String ilkSayfaWHD=driver.getWindowHandle();
+
 //● Sayfa başlığının(title) “The Internet” olduğunu doğrulayın.
+        String expectedTitle="The Internet";
+        String actualTitle=driver.getTitle();
+
+        Assert.assertEquals(expectedTitle,actualTitle);
 //● Click Here butonuna basın.
+        driver.findElement(By.xpath("//*[@id='content']")).click(); // veya //*[text()='Click Here']
+        Thread.sleep(1000);
+
+         /*
+        driver.switchTo().newWindow() kullanarak actigimiz
+        window'a driver otomatik olarak gecer
+        ANCAKKKKK....
+        biz newWindow() method'unu kullanmadan
+        bir link tikladigimizda yeni window aciliyorsa
+        driver eski window'da kalir
+        Yeni window'a driver'i gecirebilmek icin
+        yeni window'un WindowHandleDegerine ihtiyacimiz vardir.
+     */
+
 //● Acilan yeni pencerenin sayfa başlığının (title) “New Window” oldugunu dogrulayin.
+
 //● Sayfadaki textin “New Window” olduğunu doğrulayın.
 //● Bir önceki pencereye geri döndükten sonra sayfa başlığının “The Internet” olduğunu doğrulayın.
 
@@ -36,16 +57,7 @@ import org.openqa.selenium.WebElement;
 import utilities.TestBase;
 import java.util.Set;
 public class C02_SwitchingWindows extends TestBase {
-    /*
-        driver.switchTo().newWindow() kullanarak actigimiz
-        window'a driver otomatik olarak gecer
-        ANCAKKKKK....
-        biz newWindow() method'unu kullanmadan
-        bir link tikladigimizda yeni window aciliyorsa
-        driver eski window'da kalir
-        Yeni window'a driver'i gecirebilmek icin
-        yeni window'un WindowHandleDegerine ihtiyacimiz vardir.
-     */
+
     /*
 @Test
 public void test01() throws InterruptedException {
