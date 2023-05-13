@@ -7,15 +7,17 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
 
+import java.util.Set;
+
 public class C03_ActionsClass extends TestBase {
     @Test
-    public  void teset01() {
+    public void teset01() throws InterruptedException {
         //2- https://the-internet.herokuapp.com/context_menu sitesine gidin
         driver.get("https://the-internet.herokuapp.com/context_menu");
 
-               //3- Cizili alan uzerinde sag click yapin
+        //3- Cizili alan uzerinde sag click yapin
         WebElement ciziliAlan = driver.findElement(By.id("hot-spot"));
-        Actions actions= new Actions(driver);
+        Actions actions = new Actions(driver);
         actions.contextClick(ciziliAlan).perform();
 
         //4- Alert’te cikan yazinin “You selected a context menu” oldugunu test edin.
@@ -36,14 +38,27 @@ public class C03_ActionsClass extends TestBase {
         // ikinci sayfa biz newWindow() demeden acildigindan
         // ikinciWindow'un WHD'ini Java kullanarak bulmaliyiz
         String ikinciWindowWHD = "";
+        Set<String> windowHDegerleriSeti = driver.getWindowHandles(); //icinde iki tane WHD var
+        // ilkWindowWHD'e esit olmayani ikinciWindowWHD olarak atayalim
 
-     //  for (String eachWHD : windowHDegerleriSeti) {
-
+        for (String eachWHD : windowHDegerleriSeti) {
+            if (!eachWHD.equals(ilkWindowWHD)) {
+                ikinciWindowWHD = eachWHD;
+            }
         }
-       // 7- Acilan sayfada h1 taginda “Elemental Selenium” yazdigini test edelim
+        driver.switchTo().window(ikinciWindowWHD);
+
+        // 7- Acilan sayfada h1 taginda “Elemental Selenium” yazdigini test edelim
+
+        String expectedYazi = "Elemental Selenium";
+        WebElement yaziElementi = driver.findElement(By.tagName("h1"));
+        String actualYazi = yaziElementi.getText();
+
+        Assert.assertEquals(expectedYazi, actualYazi);
+        Thread.sleep(1000);
     }
 
-
+}
 /*
 package day09_switchingWindow_actionsClass;
 import org.junit.Assert;
@@ -77,7 +92,7 @@ public class C03_ActionsClass extends TestBase {
 
         String ikinciWindowWHD = "";
         Set<String> windowHDegerleriSeti = driver.getWindowHandles(); // icinde 2 tane WHD var
-        // ilkWindowWHD'e esit olmayani ikinciWindowWHD olarak atayalim
+
         for (String eachWHD : windowHDegerleriSeti
              ) {
             if (!eachWHD.equals(ilkWindowWHD)){
