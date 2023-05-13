@@ -1,43 +1,43 @@
 package day10_actionClass_Faker_FileTestleri;
 
-public class C02_KlavyeActions {
-}
-/*
-package day10_actionsClass_Faker_FileTestleri;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import utilities.TestBase;
+
 public class C02_KlavyeActions extends TestBase {
+
     @Test
     public void test01() throws InterruptedException {
-        //1- https://www.facebook.com adresine gidelim ve cookies'i kabul edelim
+        //1- https://www.facebook.com adresine gidelim ve cıkarsa cookies'i kabul edelim
         driver.get("https://www.facebook.com");
-        driver.findElement(By.xpath("//button[@*='_42ft _4jy0 _al65 _4jy3 _4jy1 selected _51sy']")).click();
+      //  driver.findElement(By.xpath("//button[@*='_42ft _4jy0 _al65 _4jy3 _4jy1 selected _51sy']")).click();
+
         //2- Yeni hesap olustur butonuna basalim
         driver.findElement(By.xpath("//a[@* = '_42ft _4jy0 _6lti _4jy6 _4jy2 selected _51sy']")).click();
+
         //3- Ad, soyad, mail ve sifre kutularina deger yazalim ve kaydol tusuna basalim
-        Actions actions = new Actions(driver);
-        WebElement isimKutusu = driver.findElement(By.xpath("//*[@name='firstname']"));
+        Actions actions=new Actions(driver);
+        WebElement isimKutusu = driver.findElement(By.xpath("//*[@id='u_3_b_DT']"));
         actions.click(isimKutusu)
-                .sendKeys("Ali")
+                .sendKeys("Hilal Nur")
                 .sendKeys(Keys.TAB)
-                .sendKeys("Karahan")
+                .sendKeys("KAVALCI")
                 .sendKeys(Keys.TAB)
-                .sendKeys("a1234321bc@gmail.com")
+                .sendKeys("falanfesmekan@gmail.com")
                 .sendKeys(Keys.TAB)
-                .sendKeys("a1234321bc@gmail.com")
+                .sendKeys("falanfesmekan@gmail.com")
                 .sendKeys(Keys.TAB)
-                .sendKeys("Malatya44")
+                .sendKeys("Sivas58")
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
-                .sendKeys("15")
+                .sendKeys("23")
                 .sendKeys(Keys.TAB)
-                .sendKeys("Mar")
+                .sendKeys("Nisan")
                 .sendKeys(Keys.TAB)
-                .sendKeys("1990")
+                .sendKeys("2000")
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.ARROW_RIGHT)
@@ -46,9 +46,10 @@ public class C02_KlavyeActions extends TestBase {
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
                 .sendKeys(Keys.TAB)
+     //4- Kaydol tusuna basalim
                 .sendKeys(Keys.ENTER).perform();
-        //4- Kaydol tusuna basalim
-        Thread.sleep(5000);
+
+
+        Thread.sleep(2000);
     }
 }
- */
