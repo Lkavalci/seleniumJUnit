@@ -13,7 +13,8 @@ public class C01_ReadExcel {
 
     @Test
     public void test01() throws IOException {
-
+        // ulkeler.xlsx dosyasinda 16.satirdaki ulkenin
+        // turkce isminin Barbados oldugunu test edin
         String dosyaYolu= System.getProperty("user.dir"+"/src/test/java/day12_webTables_excelOtomasyon/ulkeler.xlsx");
         FileInputStream fis = new FileInputStream(dosyaYolu);
 
@@ -27,6 +28,8 @@ public class C01_ReadExcel {
         String expectedIsim="Barbados";
         Assert.assertEquals(expectedIsim,actualIsim);
 
+        // Excel'de ingilizce ismi Benin olan bir ulke
+        // olup olmadigini test edin
 
         int sonSatirIndexi=workbook.getSheet("Sayfa1").getLastRowNum();
 
@@ -38,34 +41,12 @@ public class C01_ReadExcel {
     }
 }
 /*
-package day13_ExcelOtomasyonu_Screenshot;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
-import org.junit.Assert;
-import org.junit.Test;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Map;
-import java.util.TreeMap;
+
 public class C01_ReadExcel {
     @Test
     public void test01() throws IOException {
-        // ulkeler.xlsx dosyasinda 16.satirdaki ulkenin
-        // turkce isminin Barbados oldugunu test edin
-        String dosyaYolu= System.getProperty("user.dir") + "/src/test/java/day12_webTables_excelOtomasyon/ulkeler.xlsx";
-        FileInputStream fis = new FileInputStream(dosyaYolu);
-        Workbook workbook = WorkbookFactory.create(fis);
-        String actualIsim = workbook
-                            .getSheet("Sayfa1")
-                            .getRow(15)
-                            .getCell(2)
-                            .toString();
-        String expectedIsim="Barbados";
-        Assert.assertEquals(expectedIsim,actualIsim);
-        // Excel'de ingilizce ismi Benin olan bir ulke
-        // olup olmadigini test edin
+
+
         int sonSatirIndexi=workbook.getSheet("Sayfa1").getLastRowNum();
         System.out.println(sonSatirIndexi);
         boolean beninVarMi=false;
