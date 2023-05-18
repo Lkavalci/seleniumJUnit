@@ -1,5 +1,6 @@
 package day13_ExcelOtomasyonu_Screenshot;
 
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.junit.Assert;
@@ -8,6 +9,8 @@ import org.junit.Test;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class C01_ReadExcel {
 
@@ -35,55 +38,41 @@ public class C01_ReadExcel {
 
         System.out.println(sonSatirIndexi);
         boolean beninVarMi=false;
-
-
-
-    }
+for (int i =1; i<= sonSatirIndexi ; i++) {
+                actualIsim= workbook
+                        .getSheet("Sayfa1")
+                        .getRow(i)
+                        .getCell(0)
+                        .toString();
+                if (actualIsim.equalsIgnoreCase("Benin")) {
+                    beninVarMi=true;
+                    break;
+                }
 }
-/*
+            Assert.assertTrue(beninVarMi);
 
-public class C01_ReadExcel {
-    @Test
-    public void test01() throws IOException {
-
-
-        int sonSatirIndexi=workbook.getSheet("Sayfa1").getLastRowNum();
-        System.out.println(sonSatirIndexi);
-        boolean beninVarMi=false;
-        for (int i = 1; i <= sonSatirIndexi ; i++) {
-            actualIsim = workbook
-                    .getSheet("Sayfa1")
-                    .getRow(i)
-                    .getCell(0)
-                    .toString();
-            if (actualIsim.equalsIgnoreCase("Benin")){
-                beninVarMi=true;
-                break;
-            }
-        }
-        Assert.assertTrue(beninVarMi);
         // Sayfa2'de kullanilan satir sayisinin 7 oldugunu test edin
-        int kullanilanSatirSayisi= workbook
-                                    .getSheet("Sayfa2")
-                                    .getPhysicalNumberOfRows();
         int expectedSatirSayisi=7;
+        int kullanilanSatirSayisi=workbook
+                                        .getSheet("Sayfa2")
+                                        .getPhysicalNumberOfRows();
         Assert.assertEquals(expectedSatirSayisi,kullanilanSatirSayisi);
+
         // Sayfa1'deki tum ulke isimlerini
         // ve tum bilgileri bir Map olarak kaydedin
         // ingilizce isim key, geriye kalanlar ise birlestirilerek value olsun
         Map<String,String> ulkelerMap = new TreeMap<>();
         Sheet sheet= workbook.getSheet("Sayfa1");
-        for (int i = 1; i <=sonSatirIndexi ; i++) {
-            String key = sheet.getRow(i).getCell(0).toString();
-            String value =  sheet.getRow(i).getCell(1).toString()+ ", " +
-                            sheet.getRow(i).getCell(2).toString()+ ", " +
-                            sheet.getRow(i).getCell(3).toString();
-            ulkelerMap.put(key,value);
+        for (int i =1; i <=sonSatirIndexi; i++) {
+                String key = sheet.getRow(i).getCell(0).toString();
+                String value = sheet.getRow(i).getCell(1).toString()+", "+
+                                sheet.getRow(i).getCell(2).toString()+", "+
+                                sheet.getRow(i).getCell(3).toString();
+                ulkelerMap.put(key,value);
         }
         System.out.println(ulkelerMap);
+
         // Ismi Netherlands olan ulke var mi test edin
         Assert.assertTrue(ulkelerMap.containsKey("Netherlands"));
     }
 }
-
- */
